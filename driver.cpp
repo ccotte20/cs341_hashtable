@@ -127,7 +127,7 @@ int main()
 	
 	HashTableArray h(7);
 	
-	h.setProbe(quadratic);
+	h.setProbe(linear);
 	
 	h.insert(76, 1);
 	h.insert(40, 1);
@@ -137,7 +137,7 @@ int main()
 	
 	h.print();
 	
-	/* if(h.search(48)!=-1)
+	if(h.search(48)!=-1)
 		std::cout<<"Key: "<<48<<" Value: "<<h.search(48)<<std::endl;
 	else
 		std::cout<<"Not found"<<std::endl;
@@ -154,7 +154,7 @@ int main()
 	if(h.search(48)!=-1)
 		std::cout<<"Key: "<<48<<" Value: "<<h.search(48)<<std::endl;
 	else
-		std::cout<<"Not found"<<std::endl; */
+		std::cout<<"Not found"<<std::endl;
 	
 	return 0;
 }

@@ -13,15 +13,12 @@ class HashTableArray : public HashTable
 	public:
 		HashTableArray(int size);
 		~HashTableArray();
-		int HashFunction(int key);
 		void insert(int key, int value);
 		int search(int key);
 		void remove(int key);
 		void print();
-		HashEntry * getEntry();
 		int getSize();
 		Probe getProbe();
-		void setEntry(HashEntry * entry);
 		void setSize(int size);
 		void setProbe(Probe probe);
 	private:

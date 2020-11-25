@@ -15,17 +15,12 @@ HashTableArray::HashTableArray(int size) : size_(size)
 
 HashTableArray::HashTableArray()
 {
-	delete entry_;
+	
 }
 
 HashTableArray::~HashTableArray()
 {
-	
-}
-
-int HashTableArray::HashFunction(int key)
-{
-	return key % size_;
+	delete entry_;
 }
 
 void HashTableArray::insert(int key, int value)
@@ -52,7 +47,7 @@ void HashTableArray::insert(int key, int value)
 	}
 	else if(probe_ == quadratic)
 	{
-		int pos = HashFunction(key);
+		int pos = key % size_;
 		int n(1);
 		while(entry_[pos].getStatus() == OCCUPIED && n <= size_)
 		{
@@ -77,11 +72,11 @@ int HashTableArray::search(int key)
 {
 	if(probe_ == linear)
 	{
-		int pos = HashFunction(key);
+		int pos = key % size_;
 		int n(1);
 		while(entry_[pos].getStatus() != EMPTY && entry_[pos].getKey() != key && n <= size_)
 		{
-			pos=HashFunction(pos+1);
+			pos=(key + n) % size_;
 			n++;
 		}
 		if(entry_[pos].getKey() == key)
@@ -91,11 +86,11 @@ int HashTableArray::search(int key)
 	}
 	else if(probe_ == quadratic)
 	{
-		int pos = HashFunction(key);
+		int pos = key % size_;
 		int n(1);
 		while(entry_[pos].getStatus() != EMPTY && entry_[pos].getKey() != key && n <= size_)
 		{
-			pos=HashFunction((pos + (n*n)));
+			pos=(key + (n*n)) % size_;
 			n++;
 		}
 		if(entry_[pos].getKey() == key)
@@ -109,11 +104,11 @@ void HashTableArray::remove(int key)
 {
 	if(probe_ == linear)
 	{
-		int pos = HashFunction(key);
+		int pos = key % size_;
 		int n(1);
 		while(entry_[pos].getStatus() != EMPTY && entry_[pos].getKey() != key && n <= size_)
 		{
-			pos=HashFunction(pos+1);
+			pos=(key + n) % size_;
 			n++;
 		}
 		if(entry_[pos].getKey() == key)
@@ -126,11 +121,11 @@ void HashTableArray::remove(int key)
 	}
 	else if(probe_ == quadratic)
 	{
-		int pos = HashFunction(key);
+		int pos = key % size_;
 		int n(1);
 		while(entry_[pos].getStatus() != EMPTY && entry_[pos].getKey() != key && n <= size_)
 		{
-			pos=HashFunction(pos+1);
+			pos=(key + (n*n)) % size_;
 			n++;
 		}
 		if(entry_[pos].getKey() == key)
@@ -156,11 +151,6 @@ void HashTableArray::print()
 	std::cout<<"*********************************"<<std::endl;
 }
 
-HashEntry * HashTableArray::getEntry()
-{
-	return entry_;
-}
-
 int HashTableArray::getSize()
 {
 	return size_;
@@ -169,11 +159,6 @@ int HashTableArray::getSize()
 Probe HashTableArray::getProbe()
 {
 	return probe_;
-}
-
-void HashTableArray::setEntry(HashEntry * entry)
-{
-	entry_=entry;
 }
 
 void HashTableArray::setSize(int size)

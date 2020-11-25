@@ -15,7 +15,7 @@ HashTableArray::HashTableArray(int size) : size_(size)
 
 HashTableArray::HashTableArray()
 {
-	
+	delete entry_;
 }
 
 HashTableArray::~HashTableArray()
@@ -32,11 +32,11 @@ void HashTableArray::insert(int key, int value)
 {
 	if(probe_ == linear)
 	{
-		int pos = HashFunction(key);
+		int pos = key % size_;
 		int n(1);
 		while(entry_[pos].getStatus() == OCCUPIED && n <= size_)
 		{
-			pos=HashFunction(pos+1);
+			pos=(key + n) % size_;
 			n++;
 		}
 		if(n<=size_)
@@ -56,7 +56,8 @@ void HashTableArray::insert(int key, int value)
 		int n(1);
 		while(entry_[pos].getStatus() == OCCUPIED && n <= size_)
 		{
-			pos=HashFunction((pos + (n * n)));
+			pos=(key + (n*n)) % size_; //newHashValue = (hashValue + (i * i)) % size_;
+
 			n++;
 		}
 		if(n<=size_)

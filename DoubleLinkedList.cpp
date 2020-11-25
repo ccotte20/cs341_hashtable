@@ -61,7 +61,11 @@ int DoubleLinkedList::find(int data)
 			else
 				temp = temp->getNextNode();
 		}
-		return -1;
+		
+		if(LinkedList::getTail()->getData() == data)
+			return LinkedList::getTail()->getEntry().getValue();
+		else
+			return -1;
 	}
 	else
 	{

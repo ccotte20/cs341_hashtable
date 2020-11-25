@@ -117,7 +117,7 @@ void HashTableArray::remove(int key)
 			std::cout<<"Key "<<key<<" removed."<<std::endl;
 		}
 		else
-			std::cout<<"Key "<<key<<"not found"<<std::endl;
+			std::cout<<"Key "<<key<<" not found"<<std::endl;
 	}
 	else if(probe_ == quadratic)
 	{
@@ -134,7 +134,7 @@ void HashTableArray::remove(int key)
 			std::cout<<"Key "<<key<<" removed."<<std::endl;
 		}
 		else
-			std::cout<<"Key "<<key<<"not found"<<std::endl;
+			std::cout<<"Key "<<key<<" not found"<<std::endl;
 	}
 }
 

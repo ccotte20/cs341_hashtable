@@ -110,6 +110,7 @@ void LinkedList::removeLinkedNode(int data)
 		curNode->setNextNode(nullptr);
 		tail_ = curNode;
 		
+		oldTail->setNextNode(nullptr);
 		delete oldTail;
 	}
 	else

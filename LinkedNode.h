@@ -2,9 +2,10 @@
 // I pledge that I have neither given nor 
 // received any help on this assignment.
 // Clark Otte
-#include "Node.h"
+
 #ifndef LINKEDNODE_H
 #define LINKEDNODE_H
+#include "Node.h"
 class LinkedNode : public Node
 {
 	public:

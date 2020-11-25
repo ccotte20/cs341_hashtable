@@ -47,9 +47,9 @@ void DoubleLinkedList::printList()
 	std::cout<<LinkedList::getTail()->getData()<<std::endl;
 }
 
-/* void DoubleLinkedList::insertLinkedNode(LinkedNode * node, int data)
+void DoubleLinkedList::insertLinkedNode(LinkedNode * node, int data)
 {
-	if(LinkedList::getHead() == nullptr)
+	if(isEmtpy())
 	{
 		setHead(node);
 		setTail(node);
@@ -59,41 +59,6 @@ void DoubleLinkedList::printList()
 		LinkedList::getTail()->setNextNode(node);
 		node->setPrevNode(LinkedList::getTail());
 		LinkedList::setTail(node);
-	}
-} */
-
-void DoubleLinkedList::insertLinkedNode(LinkedNode * node, int data)
-{
-	LinkedNode * newLinkedNode = new LinkedNode(data);
-	
-	if(!isEmtpy())
-	{
-		if(node == LinkedList::getTail())
-		{
-			node->setNextNode(newLinkedNode);
-			newLinkedNode->setPrevNode(node);
-			LinkedList::setTail(newLinkedNode);
-			
-		}
-		else if(node == LinkedList::getHead())
-		{
-			newLinkedNode->setNextNode(node);
-			node->setPrevNode(newLinkedNode);
-			LinkedList::setHead(newLinkedNode);
-		}
-		else
-		{
-			// insert after node
-			newLinkedNode->setNextNode(node->getNextNode());
-			newLinkedNode->setPrevNode(node);
-			node->getNextNode()->setPrevNode(newLinkedNode);
-			node->setNextNode(newLinkedNode);
-		}
-	}
-	else
-	{
-		setHead(node);
-		setTail(node);
 	}
 }
 
@@ -173,7 +138,10 @@ void DoubleLinkedList::insertAfter(LinkedNode * node, int data)
 	LinkedNode * newNode = new LinkedNode(data);
 	if(node->getNextNode() == nullptr)
 	{
-		insertLinkedNode(newNode, data);
+		newNode->setPrevNode(node);
+		node->setNextNode(newNode);
+		LinkedList::setTail(newNode);
+		
 	}
 	else
 	{

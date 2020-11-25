@@ -2,9 +2,10 @@
 // I pledge that I have neither given nor 
 // received any help on this assignment.
 // Clark Otte
-#include "LinkedList.h"
+
 #ifndef DOUBLELINKEDLIST_H
 #define DOUBLELINKEDLIST_H
+#include "LinkedList.h"
 class DoubleLinkedList : public LinkedList
 {
 	public:

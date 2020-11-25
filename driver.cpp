@@ -3,6 +3,8 @@
 // received any help on this assignment.
 // Clark Otte
 #include "DoubleLinkedList.h"
+#include "LinkedList.h"
+#include "HashTableArray.h"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -123,20 +125,36 @@ int main()
 	//delete dll
 	delete dll; */
 	
-	LinkedList * ll = new LinkedList();
+	HashTableArray h(7);
 	
-	ll->insert(7);
-	ll->insert(10);
-	ll->insert(11);
-	ll->insert(20);
+	h.setProbe(quadratic);
 	
-	ll->printList();
+	h.insert(76, 1);
+	h.insert(40, 1);
+	h.insert(48, 1);
+	h.insert(5, 1);
+	h.insert(55, 1);
 	
-	ll->remove(10);
+	h.print();
 	
-	ll->printList();
+	if(h.search(48)!=-1)
+		std::cout<<"Key: "<<48<<" Value: "<<h.search(48)<<std::endl;
+	else
+		std::cout<<"Not found"<<std::endl;
 	
-	delete ll;
+	if(h.search(0)!=-1)
+		std::cout<<"Key: "<<48<<" Value: "<<h.search(48)<<std::endl;
+	else
+		std::cout<<"Not found"<<std::endl;
+	
+	h.remove(48);
+	
+	h.print();
+	
+	if(h.search(48)!=-1)
+		std::cout<<"Key: "<<48<<" Value: "<<h.search(48)<<std::endl;
+	else
+		std::cout<<"Not found"<<std::endl;
 	
 	return 0;
 }

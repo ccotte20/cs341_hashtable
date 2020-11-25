@@ -8,7 +8,7 @@ class List
 {
 	public:
 		virtual ~List() {}
-		virtual bool isEmtpy() = 0;
+		virtual bool isEmpty() = 0;
 		virtual int getLength() = 0;
 		virtual void insert(int element) = 0;
 		virtual void remove(int element) = 0;

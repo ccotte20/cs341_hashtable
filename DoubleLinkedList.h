@@ -14,6 +14,8 @@ class DoubleLinkedList : public LinkedList
 		virtual bool isEmtpy();
 		virtual int getLength();
 		virtual void insert(int element);
+		void insert(int element, int value);
+		int find(int data);
 		virtual void printList();
 		virtual void insertLinkedNode(LinkedNode * node, int data);
 		virtual void removeLinkedNode(int data);

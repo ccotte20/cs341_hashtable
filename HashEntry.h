@@ -2,10 +2,10 @@
 // I pledge that I have neither given nor 
 // received any help on this assignment.
 // Clark Otte
-enum Status { EMPTY, OCCUPIED, REMOVED };
 
 #ifndef HASHENTRY_H
 #define HASHENTRY_H
+enum Status { EMPTY, OCCUPIED, REMOVED };
 
 class HashEntry
 {

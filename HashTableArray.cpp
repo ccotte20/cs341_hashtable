@@ -20,7 +20,7 @@ HashTableArray::HashTableArray()
 
 HashTableArray::~HashTableArray()
 {
-	delete entry_;
+	delete [] entry_;
 }
 
 void HashTableArray::insert(int key, int value)

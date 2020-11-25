@@ -10,6 +10,14 @@ LinkedNode::LinkedNode(int data) : Node(data)
 	nextNode_ = nullptr;
 }
 
+LinkedNode::LinkedNode(int data, int value) : Node(data)
+{
+	prevNode_ = nullptr;
+	nextNode_ = nullptr;
+	entry_.setKey(data);
+	entry_.setValue(value);
+}
+
 LinkedNode::LinkedNode() : Node()
 {
 	prevNode_ = nullptr;
@@ -55,4 +63,9 @@ LinkedNode * LinkedNode::getNextNode()
 LinkedNode * LinkedNode::getPrevNode()
 {
 	return prevNode_;
+}
+
+HashEntry LinkedNode::getEntry()
+{
+	return entry_;
 }

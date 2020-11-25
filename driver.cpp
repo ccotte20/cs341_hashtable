@@ -2,9 +2,8 @@
 // I pledge that I have neither given nor 
 // received any help on this assignment.
 // Clark Otte
-#include "DoubleLinkedList.h"
-#include "LinkedList.h"
 #include "HashTableArray.h"
+#include "HashTableChaining.h"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -125,9 +124,7 @@ int main()
 	//delete dll
 	delete dll; */
 	
-	HashTableArray h(7);
-	
-	h.setProbe(linear);
+	HashTableChaining h(7);
 	
 	h.insert(76, 1);
 	h.insert(40, 1);
@@ -143,7 +140,7 @@ int main()
 		std::cout<<"Not found"<<std::endl;
 	
 	if(h.search(0)!=-1)
-		std::cout<<"Key: "<<48<<" Value: "<<h.search(48)<<std::endl;
+		std::cout<<"Key: "<<0<<" Value: "<<h.search(0)<<std::endl;
 	else
 		std::cout<<"Not found"<<std::endl;
 	

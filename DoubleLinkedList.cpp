@@ -19,15 +19,20 @@ bool DoubleLinkedList::isEmtpy()
 
 int DoubleLinkedList::getLength()
 {
-	int count(0);
-	LinkedNode * temp = LinkedList::getHead();
-	while(temp->getNextNode() != nullptr)
+	if(!isEmtpy())
 	{
-		temp = temp->getNextNode();
+		int count(0);
+		LinkedNode * temp = LinkedList::getHead();
+		while(temp->getNextNode() != nullptr)
+		{
+			temp = temp->getNextNode();
+			count++;
+		}
 		count++;
+		return count;
 	}
-	count++;
-	return count;
+	else
+		return 0;
 }
 
 void DoubleLinkedList::insert(int element)
@@ -36,15 +41,46 @@ void DoubleLinkedList::insert(int element)
 	insertLinkedNode(newNode, element);
 }
 
+void DoubleLinkedList::insert(int element, int value)
+{
+	LinkedNode * newNode = new LinkedNode(element, value);
+	insertLinkedNode(newNode, element);
+}
+
+int DoubleLinkedList::find(int data)
+{
+	if(!isEmtpy())
+	{
+		LinkedNode * temp = LinkedList::getHead();
+		while(temp->getNextNode() != nullptr)
+		{
+			if(temp->getData() == data)
+			{
+				return temp->getEntry().getValue();
+			}
+			else
+				temp = temp->getNextNode();
+		}
+		return -1;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
 void DoubleLinkedList::printList()
 {
-	LinkedNode * ptr = LinkedList::getHead();
-	while(ptr->getNextNode() != nullptr)
+	if(!isEmtpy())
 	{
-		std::cout<<ptr->getData()<<" ";
-		ptr = ptr->getNextNode();
+		LinkedNode * ptr = LinkedList::getHead();
+		while(ptr->getNextNode() != nullptr)
+		{
+			std::cout<<ptr->getData()<<"<-->";
+			ptr = ptr->getNextNode();
+		}
+		std::cout<<LinkedList::getTail()->getData()<<std::endl;
 	}
-	std::cout<<LinkedList::getTail()->getData()<<std::endl;
 }
 
 void DoubleLinkedList::insertLinkedNode(LinkedNode * node, int data)
@@ -87,6 +123,7 @@ void DoubleLinkedList::removeLinkedNode(int data)
 			}
 			
 			delete oldHead;
+			std::cout<<"Key "<<data<<" removed"<<std::endl;
 		}
 		else if(LinkedList::getTail()->getData() == data)
 		{
@@ -99,6 +136,7 @@ void DoubleLinkedList::removeLinkedNode(int data)
 			LinkedList::setTail(newTail);
 			
 			delete oldTail;
+			std::cout<<"Key "<<data<<" removed"<<std::endl;
 		}
 		else
 		{
@@ -121,6 +159,8 @@ void DoubleLinkedList::removeLinkedNode(int data)
 					
 					isFound = true;
 					
+					std::cout<<"Key "<<data<<" removed"<<std::endl;
+					
 					break;
 				}
 				
@@ -128,7 +168,7 @@ void DoubleLinkedList::removeLinkedNode(int data)
 			}
 			
 			if(!isFound)
-				std::cout << "Element " << data << " was not found in the list." << std::endl;
+				std::cout << "Key " << data << " was not found." << std::endl;
 		}
 	}
 }

@@ -10,6 +10,7 @@ HashEntry::HashEntry(int key, int value) : key_(key), value_(value), status_(OCC
 	
 }
 
+// Dr. Ryan: We should avoid using -1 as it may be a valid value.
 HashEntry::HashEntry() : key_(-1), value_(-1), status_(EMPTY)
 {
 	

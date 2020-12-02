@@ -9,6 +9,7 @@ Node::Node(int data) : data_(data)
 	
 }
 
+// Dr. Ryan: We should avoid using -1 as it might be a real value.
 Node::Node() : data_(-1)
 {
 	

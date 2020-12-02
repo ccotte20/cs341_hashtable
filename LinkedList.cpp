@@ -3,6 +3,7 @@
 // received any help on this assignment.
 // Clark Otte
 #include "LinkedList.h"
+// Dr. Ryan: Why not include this in the Header to ensure it is only included once per project?
 #include <iostream>
 
 LinkedList::LinkedList()

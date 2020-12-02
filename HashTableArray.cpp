@@ -4,6 +4,7 @@
 // Clark Otte
 
 #include "HashTableArray.h"
+// Dr. Ryan: Why not include this in the Header to ensure it is only included once per project?
 #include <iostream>
 
 HashTableArray::HashTableArray(int size) : size_(size)
